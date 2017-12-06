@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sys
 
 pdbfile = open(sys.argv[1],'r')
