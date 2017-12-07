@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sys
 
 pdbfile = open(sys.argv[1],'r')
@@ -9,7 +10,7 @@ while inline != 'END\n':
     output = output + inline
     inline = pdbfile.readline()
     if inline == '': #sanity check
-        print "Error"
+        print("Error")
         exit()
 
 inline = psfile.readline().split()
@@ -20,8 +21,8 @@ while inline[1] != '!NBOND:':
 
 bondlist = psfile.readline().split()
 for i in range(int(inline[0])):
-    new = bondlist.pop(0)
-    output = output + 'CONECT   '+new+'   '+bondlist.pop(0)+'\n'
+    new = int(bondlist.pop(0))
+    output = output + 'CONECT%5d%5d\n' % (new, int(bondlist.pop(0)))
     if len(bondlist)==0:
         bondlist = psfile.readline().split()
 
